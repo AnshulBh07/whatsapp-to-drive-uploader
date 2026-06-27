@@ -1,34 +1,35 @@
 {
-  "name": "pharmacy-archives",
-  "version": "1.0.0",
-  "description": "helps automate nr products prescriptions directly from whatsapp group to google drive in their respective folders",
-  "main": "index.js",
-  "scripts": {
-    "dev": "nodemon",
-    "start": "ts-node src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "Anshul Bhardwaj",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/node": "^26.0.1",
-    "@types/qrcode-terminal": "^0.12.2",
-    "ts-node": "^10.9.2",
-    "tsx": "^4.22.4",
-    "typescript": "^6.0.3"
-  },
-  "dependencies": {
-    "@hapi/boom": "^10.0.1",
-    "@types/mongoose": "^5.11.96",
-    "@types/nodemon": "^1.19.6",
-    "@whiskeysockets/baileys": "^7.0.0-rc13",
-    "dotenv": "^17.4.2",
-    "googleapis": "^173.0.0",
-    "mongoose": "^9.7.3",
-    "nodemon": "^3.1.14",
-    "open": "^11.0.0",
-    "pino": "^10.3.1",
-    "qrcode-terminal": "^0.12.0"
-  }
+	"name": "pharmacy-archives",
+	"version": "1.0.0",
+	"description": "helps automate nr products prescriptions directly from whatsapp group to google drive in their respective folders",
+	"main": "index.js",
+	"scripts": {
+		"dev": "nodemon",
+		"start": "ts-node src/index.ts",
+		"build": "tsc",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "Anshul Bhardwaj",
+	"license": "ISC",
+	"devDependencies": {
+		"@types/node": "^26.0.1",
+		"@types/qrcode-terminal": "^0.12.2",
+		"ts-node": "^10.9.2",
+		"tsx": "^4.22.4",
+		"typescript": "^6.0.3"
+	},
+	"dependencies": {
+		"@hapi/boom": "^10.0.1",
+		"@types/mongoose": "^5.11.96",
+		"@types/nodemon": "^1.19.6",
+		"@whiskeysockets/baileys": "^7.0.0-rc13",
+		"dotenv": "^17.4.2",
+		"googleapis": "^173.0.0",
+		"mongoose": "^9.7.3",
+		"nodemon": "^3.1.14",
+		"open": "^11.0.0",
+		"pino": "^10.3.1",
+		"qrcode-terminal": "^0.12.0"
+	}
 }
