@@ -1,0 +1,16 @@
+node_modules/
+dist/
+
+# WhatsApp auth
+auth/
+
+# Google credentials
+credentials/
+
+# Env files
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
