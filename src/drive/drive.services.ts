@@ -19,6 +19,8 @@ export const uploadFile = async ({
 }) => {
 	const drive = await getDrive();
 
+	console.log(`🌐 Uploading file ${filename} to drive ....`);
+
 	const res = await drive.files.create({
 		requestBody: {
 			name: filename,
@@ -64,6 +66,8 @@ const createFolder = async (
 	parentId: string,
 ) => {
 	try {
+		console.log(`🌐 Creating folder ${name} ....`);
+
 		const result = await drive.files.create({
 			requestBody: {
 				name,

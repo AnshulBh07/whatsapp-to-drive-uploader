@@ -14,5 +14,6 @@ export const getDrive = async () => {
 		auth,
 	});
 
+	console.log(`🟢 Successfully connected to drive...`);
 	return drive;
 };
