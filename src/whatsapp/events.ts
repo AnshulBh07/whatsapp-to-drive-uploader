@@ -4,10 +4,18 @@ import dotenv from "dotenv";
 import { downloadMedia } from "./media";
 import { UploadedPrescription } from "../models/uploadedPrescription";
 import { uploadToDrive } from "../drive/drive.services";
+import { createWhatsAppClient } from "./client";
 
 const envFile = `.env.${process.env.NODE_ENV || "development"}`;
 
 dotenv.config({ path: envFile });
+
+let reconnecting = false;
+
+const reconnect = async () => {
+	const socket = await createWhatsAppClient();
+	registerEvents(socket);
+};
 
 export const registerEvents = (socket: WASocket) => {
 	socket.ev.on("connection.update", ({ connection, qr, lastDisconnect }) => {
@@ -22,12 +30,34 @@ export const registerEvents = (socket: WASocket) => {
 				break;
 
 			case "open":
-				console.log("🟢 Connected!");
+				console.log("🟢 Connected!", new Date().toISOString());
+				reconnecting = false;
 				break;
 
 			case "close":
-				console.log("🔴 Connection closed");
+				console.log("🔴 Connection closed", new Date().toISOString());
 				console.dir(lastDisconnect, { depth: null });
+
+				if (reconnecting) return;
+
+				reconnecting = true;
+
+				void (async () => {
+					let attempt = 1;
+
+					while (reconnecting) {
+						try {
+							console.log(`🔄 Reconnect attempt ${attempt}...`);
+							await reconnect();
+							break;
+						} catch (err) {
+							console.error(`❌ Reconnect attempt ${attempt} failed`, err);
+							attempt++;
+							await new Promise((resolve) => setTimeout(resolve, 5000));
+						}
+					}
+				})();
+
 				break;
 		}
 	});
